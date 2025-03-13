@@ -1,0 +1,9 @@
+[
+    {
+        "title": "First Post", 
+        "content": "This is my first blog."},
+    {
+        "title": "Second Post",
+        "content": "This is anothe blog post."
+    }
+]

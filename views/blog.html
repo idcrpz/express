@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>Blog</h1>
+
+    <div id="blog-posts">
+        <!-- Blog posts will be inserted here -->
+    </div>
+
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/about">About</a> |
+        <a href="/contact">Contact</a>
+    </nav>
+
+    <script>
+        // Fetch the blog posts from the server and display them
+        fetch('/blog')
+            .then(response => response.json())
+            .then(posts => {
+                const blogContainer = document.getElementById('blog-posts');
+                posts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.classList.add('post');
+                    postElement.innerHTML = `
+            <h2>${post.title}</h2>
+            <p>${post.content}</p>
+          `;
+                    blogContainer.appendChild(postElement);
+                });
+            })
+            .catch(error => console.error('Error fetching blog data:', error));
+    </script>
+</body>
+
+</html>
